@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TcPlcObject Version="1.1.0.1" ProductVersion="3.1.4024.13">
+  <POU Name="MAIN" Id="{42a954fd-7b96-444e-99d2-2bef7613b071}" SpecialFunc="None">
+    <Declaration><![CDATA[PROGRAM MAIN
+VAR
+    CycleCount       : UDINT;
+    hr               : HRESULT;
+    fbCamera         : FB_VN_FileSourceControl;
+    eState           : ETcVnCameraState;
+    ipImageIn        : ITcVnImage;
+    ipImageInDisp    : ITcVnDisplayableImage;
+    nNewImageCounter : UINT;
+    sText            : STRING;
+    aColorBlack      : TcVnVector4_LREAL := [0, 0, 0, 255];
+END_VAR
+]]></Declaration>
+    <Implementation>
+      <ST><![CDATA[CycleCount := CycleCount + 1;
+
+eState := fbCamera.GetState();
+
+IF eState = TCVN_CS_ERROR THEN
+    hr := fbCamera.Reset();
+
+ELSIF eState < TCVN_CS_ACQUIRING THEN
+    hr := fbCamera.StartAcquisition();
+
+ELSIF eState = TCVN_CS_ACQUIRING THEN
+    hr := fbCamera.GetCurrentImage(ipImageIn);
+
+    // Check if new Image was received
+    IF SUCCEEDED(hr) AND ipImageIn <> 0 THEN
+        nNewImageCounter := nNewImageCounter + 1;
+        sText            := UDINT_TO_STRING(CycleCount);
+        hr               := F_VN_PutText(sText,
+                                         ipImageIn,
+                                         12,
+                                         100,
+                                         ETcVnFontType.TCVN_FT_HERSHEY_PLAIN,
+                                         2,
+                                         aColorBlack,
+                                         hr);
+
+        // Place to call vision algorithms
+        hr := F_VN_TransformIntoDisplayableImage(ipImageIn, ipImageInDisp, hr);
+    END_IF
+END_IF]]></ST>
+    </Implementation>
+    <LineIds Name="MAIN">
+      <LineId Id="59" Count="28" />
+      <LineId Id="13" Count="0" />
+    </LineIds>
+  </POU>
+</TcPlcObject>

@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<TcLicenseInfo xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://www.beckhoff.com/schemas/2011/11/TcLicenseInfo">
+	<LicenseInfo>
+		<SystemId>{0BA33220-94AB-850A-7875-76FB69A0FC1A}</SystemId>
+		<IssueTime>2024-09-03T09:08:00</IssueTime>
+		<ExpireTime>2024-09-11T00:00:00</ExpireTime>
+		<LicenseKey>076cd266d2d4893c6fd08f536374599e002636c8e9c94b7291e3d7f4c4eb9ae66c6ddd539a929d20175bf29af940198b688bfbffabacd424958b8eebe525c912a77f10700af4b8f43070935572ce42c6d0f923d5e304bde234cc220415750a7c054e8a4f0e025d142a5071735e4906d2e932f603364bf5cb757a43fd85a91f6aaf9d7e36ca73c06872380d8384918573fb5784aa27866789eb20ddc7163e43a45ce743583c5beefa89f5e3a617735bda7cdc2513a04e1bbae2ff9b5190e2f81442c3a2a0194f33bbb43c4a8b1fdd9a5fcd9c9cbfcd4f3d511226e9e1a6b017ae679dc10680a305e114834a2b4a0210a6dcffcede3ff21fcf7d722930fa222a53</LicenseKey>
+		<License>
+			<LicenseId>{2C358067-6E81-4F6A-B8D9-AC1F63FEB6FD}</LicenseId>
+			<Name>TC3 Vision Base</Name>
+			<OrderNo>TF7100</OrderNo>
+		</License>
+	</LicenseInfo>
+</TcLicenseInfo>
